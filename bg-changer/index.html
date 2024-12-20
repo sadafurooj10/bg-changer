@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Color Changer</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #ffffff;
+      transition: background-color 1s ease-in-out;
+      text-align: center;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2em;
+      color: #333;
+      margin-bottom: 20px;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    button {
+      font-size: 1.2em;
+      padding: 20px 30px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 10px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      margin-top: 30px;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+      transform: scale(1.1);
+    }
+
+    button:active {
+      transform: scale(1);
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Click the Button to Change the Background Color!</h1>
+    <button id="changeColorButton">Change Color</button>
+  </div>
+
+  <script>
+    // Function to generate random colors
+    function getRandomColor() {
+      const letters = '0123456789ABCDEF';
+      let color = '#';
+      for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
+    }
+
+    // Function to change the background color
+    function changeBackgroundColor() {
+      const newColor = getRandomColor();  // Get a new random color
+      document.body.style.backgroundColor = newColor;  // Apply it to the background
+    }
+
+    // Add event listener to the button
+    document.getElementById('changeColorButton').addEventListener('click', changeBackgroundColor);
+  </script>
+
+</body>
+</html>
